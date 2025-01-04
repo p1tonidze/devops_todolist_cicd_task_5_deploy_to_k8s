@@ -79,6 +79,7 @@ jobs:
           --set todoapp.secrets.DB_HOST="${{ secrets.DB_HOST }}" \
           --set todoapp.image.version=${{ github.sha }}
       - name: Deploy Helm
+      
         run: |
           helm upgrade --install --atomic --wait --timeout 3600s --debug ${{ inputs.helm-release-name }} ./todoapp-*.tgz \
           -f ${{ inputs.helm-values-path }} \
